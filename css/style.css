@@ -370,7 +370,33 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 600; margin: 0; }
   box-shadow: var(--shadow-soft);
 }
 .apt-gallery { display: flex; flex-direction: column; }
-.apt-photo-main { aspect-ratio: 4/3; }
+.apt-photo-main {
+  aspect-ratio: 4/3;
+  position: relative;
+  cursor: pointer;
+}
+.apt-view-all-btn {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(17, 43, 48, 0.78);
+  color: #fffdf8;
+  border: none;
+  border-radius: 20px;
+  padding: 7px 14px;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.apt-view-all-btn::before { content: '⊞'; font-size: 0.95rem; }
+.apt-view-all-btn:hover { background: rgba(17, 43, 48, 0.94); }
 .apt-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
 .apt-thumb {
   aspect-ratio: 1/1;
@@ -381,6 +407,74 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 600; margin: 0; }
   transition: opacity 0.2s ease;
 }
 .apt-thumb:hover, .apt-thumb.active { opacity: 1; box-shadow: inset 0 0 0 2px var(--color-accent); }
+
+/* ===== Apartment photo lightbox (Booking-style viewer) ===== */
+.apt-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(8, 12, 13, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.apt-lightbox[hidden] { display: none; }
+.apt-lightbox-stage {
+  max-width: 88vw;
+  max-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.apt-lightbox-stage img {
+  max-width: 88vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+.apt-lightbox-close,
+.apt-lightbox-arrow {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fffdf8;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: background 0.2s ease;
+}
+.apt-lightbox-close:hover,
+.apt-lightbox-arrow:hover { background: rgba(255, 255, 255, 0.24); }
+.apt-lightbox-close {
+  top: 20px;
+  right: 20px;
+  font-size: 1.6rem;
+}
+.apt-lightbox-close::before { content: '\00d7'; }
+.apt-lightbox-prev { left: 16px; top: 50%; transform: translateY(-50%); }
+.apt-lightbox-prev::before { content: '\2039'; }
+.apt-lightbox-next { right: 16px; top: 50%; transform: translateY(-50%); }
+.apt-lightbox-next::before { content: '\203a'; }
+.apt-lightbox-counter {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fffdf8;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin: 0;
+}
 
 .apt-info { padding: 28px 30px; display: flex; flex-direction: column; }
 .apt-info h3 { font-size: 1.4rem; margin-bottom: 14px; }
@@ -901,6 +995,15 @@ h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 600; margin: 0; }
   .calendar-widget { padding: 18px; }
   .progress-label { font-size: 0.72rem; }
   .map-block, .map-block iframe { min-height: 280px; }
+
+  .apt-lightbox { padding: 12px; }
+  .apt-lightbox-close,
+  .apt-lightbox-arrow { width: 40px; height: 40px; font-size: 1.2rem; }
+  .apt-lightbox-close { top: 10px; right: 10px; }
+  .apt-lightbox-prev { left: 6px; }
+  .apt-lightbox-next { right: 6px; }
+  .apt-lightbox-counter { bottom: 14px; font-size: 0.78rem; padding: 5px 14px; }
+  .apt-view-all-btn { font-size: 0.72rem; padding: 6px 11px; }
 }
 
 @media (max-width: 480px) {

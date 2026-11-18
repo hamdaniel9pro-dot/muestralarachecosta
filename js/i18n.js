@@ -72,6 +72,13 @@ const translations = {
   "apt.cta_availability": { es: "Ver disponibilidad", en: "Check availability" },
   "apt.cta_book": { es: "Reservar este apartamento", en: "Book this apartment" },
 
+  "gallery.open_label": { es: "Ampliar galería de fotos", en: "Open photo gallery" },
+  "gallery.view_all": { es: "Ver todas las fotos ({count})", en: "View all photos ({count})" },
+  "gallery.close": { es: "Cerrar", en: "Close" },
+  "gallery.prev": { es: "Foto anterior", en: "Previous photo" },
+  "gallery.next": { es: "Foto siguiente", en: "Next photo" },
+  "gallery.dialog_label": { es: "Galería de fotos", en: "Photo gallery" },
+
   "apts.note": {
     es: "* Apartamentos, fotos y precios de ejemplo, orientados a mostrar el diseño de la web.",
     en: "* Apartments, photos and prices are examples, intended to showcase the website design."

@@ -87,6 +87,182 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  /* ----- Apartment gallery: fullscreen photo viewer (Booking-style) ----- */
+  const aptLightbox = document.getElementById("aptLightbox");
+  const aptLightboxImage = document.getElementById("aptLightboxImage");
+  const aptLightboxCounter = document.getElementById("aptLightboxCounter");
+  const aptLightboxClose = document.getElementById("aptLightboxClose");
+  const aptLightboxPrev = document.getElementById("aptLightboxPrev");
+  const aptLightboxNext = document.getElementById("aptLightboxNext");
+
+  let lightboxPhotos = [];
+  let lightboxIndex = 0;
+  let lightboxTriggerEl = null;
+  let lightboxTouchStartX = null;
+
+  function getCardPhotos(card) {
+    return Array.from(card.querySelectorAll(".apt-thumb")).map((thumb) => ({
+      full: thumb.getAttribute("data-full"),
+      alt: (thumb.querySelector("img") && thumb.querySelector("img").getAttribute("alt")) || ""
+    }));
+  }
+
+  function getActiveThumbIndex(card) {
+    const thumbs = Array.from(card.querySelectorAll(".apt-thumb"));
+    const idx = thumbs.findIndex((th) => th.classList.contains("active"));
+    return idx >= 0 ? idx : 0;
+  }
+
+  function renderLightboxSlide() {
+    const photo = lightboxPhotos[lightboxIndex];
+    if (!photo || !aptLightbox) return;
+    aptLightboxImage.src = photo.full;
+    aptLightboxImage.alt = photo.alt;
+    aptLightboxCounter.textContent = `${lightboxIndex + 1} / ${lightboxPhotos.length}`;
+  }
+
+  function openLightbox(photos, startIndex, triggerEl) {
+    if (!aptLightbox || !photos.length) return;
+    lightboxPhotos = photos;
+    lightboxIndex = startIndex || 0;
+    lightboxTriggerEl = triggerEl || document.activeElement;
+    renderLightboxSlide();
+    aptLightbox.hidden = false;
+    document.body.style.overflow = "hidden";
+    aptLightboxClose.focus();
+  }
+
+  function closeLightbox() {
+    if (!aptLightbox || aptLightbox.hidden) return;
+    aptLightbox.hidden = true;
+    aptLightboxImage.src = "";
+    document.body.style.overflow = "";
+    if (lightboxTriggerEl && typeof lightboxTriggerEl.focus === "function") {
+      lightboxTriggerEl.focus();
+    }
+  }
+
+  function showPrevSlide() {
+    if (!lightboxPhotos.length) return;
+    lightboxIndex = (lightboxIndex - 1 + lightboxPhotos.length) % lightboxPhotos.length;
+    renderLightboxSlide();
+  }
+
+  function showNextSlide() {
+    if (!lightboxPhotos.length) return;
+    lightboxIndex = (lightboxIndex + 1) % lightboxPhotos.length;
+    renderLightboxSlide();
+  }
+
+  function openGalleryFromCard(card, startIndex, triggerEl) {
+    const photos = getCardPhotos(card);
+    openLightbox(photos, startIndex, triggerEl);
+  }
+
+  document.querySelectorAll(".apt-photo-main").forEach((mainPh) => {
+    const card = mainPh.closest(".apt-card");
+    if (!card) return;
+
+    mainPh.addEventListener("click", (e) => {
+      if (e.target.closest(".apt-view-all-btn")) return;
+      openGalleryFromCard(card, getActiveThumbIndex(card), mainPh);
+    });
+
+    mainPh.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+        e.preventDefault();
+        openGalleryFromCard(card, getActiveThumbIndex(card), mainPh);
+      }
+    });
+
+    const viewAllBtn = mainPh.querySelector(".apt-view-all-btn");
+    if (viewAllBtn) {
+      viewAllBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openGalleryFromCard(card, getActiveThumbIndex(card), viewAllBtn);
+      });
+    }
+  });
+
+  if (aptLightboxClose) aptLightboxClose.addEventListener("click", closeLightbox);
+  if (aptLightboxPrev) aptLightboxPrev.addEventListener("click", showPrevSlide);
+  if (aptLightboxNext) aptLightboxNext.addEventListener("click", showNextSlide);
+
+  if (aptLightbox) {
+    aptLightbox.addEventListener("click", (e) => {
+      if (e.target === aptLightbox || e.target.classList.contains("apt-lightbox-stage")) {
+        closeLightbox();
+      }
+    });
+
+    aptLightbox.addEventListener(
+      "touchstart",
+      (e) => {
+        lightboxTouchStartX = e.changedTouches[0].clientX;
+      },
+      { passive: true }
+    );
+
+    aptLightbox.addEventListener(
+      "touchend",
+      (e) => {
+        if (lightboxTouchStartX === null) return;
+        const dx = e.changedTouches[0].clientX - lightboxTouchStartX;
+        if (Math.abs(dx) > 40) {
+          if (dx < 0) showNextSlide();
+          else showPrevSlide();
+        }
+        lightboxTouchStartX = null;
+      },
+      { passive: true }
+    );
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (!aptLightbox || aptLightbox.hidden) return;
+
+    if (e.key === "Escape") {
+      closeLightbox();
+      return;
+    }
+    if (e.key === "ArrowLeft") {
+      showPrevSlide();
+      return;
+    }
+    if (e.key === "ArrowRight") {
+      showNextSlide();
+      return;
+    }
+    if (e.key === "Tab") {
+      const focusable = [aptLightboxClose, aptLightboxPrev, aptLightboxNext];
+      const currentIdx = focusable.indexOf(document.activeElement);
+      e.preventDefault();
+      let nextIdx;
+      if (e.shiftKey) {
+        nextIdx = currentIdx <= 0 ? focusable.length - 1 : currentIdx - 1;
+      } else {
+        nextIdx = currentIdx === -1 || currentIdx === focusable.length - 1 ? 0 : currentIdx + 1;
+      }
+      focusable[nextIdx].focus();
+    }
+  });
+
+  function applyGalleryTexts() {
+    document.querySelectorAll(".apt-photo-main").forEach((mainPh) => {
+      mainPh.setAttribute("aria-label", t("gallery.open_label"));
+    });
+    document.querySelectorAll(".apt-view-all-btn").forEach((btn) => {
+      const count = btn.getAttribute("data-count") || "0";
+      btn.textContent = t("gallery.view_all").replace("{count}", count);
+    });
+    if (aptLightboxClose) aptLightboxClose.setAttribute("aria-label", t("gallery.close"));
+    if (aptLightboxPrev) aptLightboxPrev.setAttribute("aria-label", t("gallery.prev"));
+    if (aptLightboxNext) aptLightboxNext.setAttribute("aria-label", t("gallery.next"));
+    if (aptLightbox) aptLightbox.setAttribute("aria-label", t("gallery.dialog_label"));
+  }
+
+  applyGalleryTexts();
+
   /* ======================================================
      APARTMENTS DATA
   ====================================================== */
@@ -593,7 +769,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateGuestsLimit();
   recalcPrice();
 
-  /* ----- Re-render dynamic text (calendars, price summary) on language change ----- */
+  /* ----- Re-render dynamic text (calendars, price summary, gallery) on language change ----- */
   document.addEventListener("langchange", () => {
     document.querySelectorAll(".calendar-widget").forEach((container) => {
       const aptId = container.getAttribute("data-apt-id");
@@ -601,6 +777,7 @@ document.addEventListener("DOMContentLoaded", () => {
       renderCalendar(aptId);
     });
     recalcPrice();
+    applyGalleryTexts();
   });
 
   /* ----- Footer year ----- */

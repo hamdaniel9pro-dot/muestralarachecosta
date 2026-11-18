@@ -105,8 +105,9 @@
       <!-- Estudio Marina -->
       <article class="apt-card" id="apt-a1" data-apt-id="a1">
         <div class="apt-gallery">
-          <div class="apt-photo-main img-ph" data-name="a1-1.jpg">
+          <div class="apt-photo-main img-ph" data-name="a1-1.jpg" role="button" tabindex="0">
             <img src="images/a1-1.jpg" alt="Salón soleado del Estudio Marina con sillón amarillo y balcón" class="apt-main-img" loading="lazy" onerror="this.closest('.img-ph').classList.add('img-missing')">
+            <button type="button" class="apt-view-all-btn" data-count="3"></button>
           </div>
           <div class="apt-thumbs">
             <button type="button" class="apt-thumb active img-ph" data-name="a1-1.jpg" data-full="images/a1-1.jpg">
@@ -152,8 +153,9 @@
       <!-- Apartamento Mirador -->
       <article class="apt-card" id="apt-a2" data-apt-id="a2">
         <div class="apt-gallery">
-          <div class="apt-photo-main img-ph" data-name="a2-1.jpg">
+          <div class="apt-photo-main img-ph" data-name="a2-1.jpg" role="button" tabindex="0">
             <img src="images/a2-1.jpg" alt="Salón del Apartamento Mirador con televisión y zona de estar" class="apt-main-img" loading="lazy" onerror="this.closest('.img-ph').classList.add('img-missing')">
+            <button type="button" class="apt-view-all-btn" data-count="3"></button>
           </div>
           <div class="apt-thumbs">
             <button type="button" class="apt-thumb active img-ph" data-name="a2-1.jpg" data-full="images/a2-1.jpg">
@@ -200,8 +202,9 @@
       <!-- Ático Poniente -->
       <article class="apt-card" id="apt-a3" data-apt-id="a3">
         <div class="apt-gallery">
-          <div class="apt-photo-main img-ph" data-name="a3-1.jpg">
+          <div class="apt-photo-main img-ph" data-name="a3-1.jpg" role="button" tabindex="0">
             <img src="images/a3-1.jpg" alt="Terraza grande del Ático Poniente con mesa, flores y vistas al atardecer" class="apt-main-img" loading="lazy" onerror="this.closest('.img-ph').classList.add('img-missing')">
+            <button type="button" class="apt-view-all-btn" data-count="3"></button>
           </div>
           <div class="apt-thumbs">
             <button type="button" class="apt-thumb active img-ph" data-name="a3-1.jpg" data-full="images/a3-1.jpg">
@@ -568,6 +571,17 @@
     <p>&copy; <span id="currentYear"></span> Larache Costa — <span data-i18n="footer.sample">sitio de muestra</span>.</p>
   </div>
 </footer>
+
+<!-- VISOR DE FOTOS A PANTALLA COMPLETA -->
+<div class="apt-lightbox" id="aptLightbox" role="dialog" aria-modal="true" hidden>
+  <button type="button" class="apt-lightbox-close" id="aptLightboxClose"></button>
+  <button type="button" class="apt-lightbox-arrow apt-lightbox-prev" id="aptLightboxPrev"></button>
+  <div class="apt-lightbox-stage">
+    <img id="aptLightboxImage" src="" alt="">
+  </div>
+  <button type="button" class="apt-lightbox-arrow apt-lightbox-next" id="aptLightboxNext"></button>
+  <p class="apt-lightbox-counter" id="aptLightboxCounter"></p>
+</div>
 
 <script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
