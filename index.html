@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Larache Costa Apartamentos</title>
+<meta name="description" content="Larache Costa Apartamentos. Alojamientos turísticos de muestra cerca de la playa. Sitio web de demostración.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%96%EF%B8%8F%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+<!-- Aviso de web de muestra / Demo site notice -->
+<div class="demo-banner" id="demoBanner">
+  <p data-i18n="notice.banner">Este es un sitio web de muestra. «Larache Costa» es una marca ficticia creada únicamente con fines de demostración. Las imágenes son de stock y no representan alojamientos reales.</p>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <nav class="navbar" aria-label="Navegación principal">
+    <a href="#inicio" class="brand">
+      <span class="brand-mark">LC</span>
+      <span class="brand-name">Larache Costa</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio" data-i18n="nav.home">Inicio</a></li>
+      <li><a href="#apartamentos" data-i18n="nav.apartments">Apartamentos</a></li>
+      <li><a href="#disponibilidad" data-i18n="nav.availability">Disponibilidad</a></li>
+      <li><a href="#zona" data-i18n="nav.area">La zona</a></li>
+      <li><a href="#faq" data-i18n="nav.faq">Preguntas</a></li>
+      <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+      <li><a href="#reservas" class="btn-nav-reserve" data-i18n="nav.reserve">Reservar</a></li>
+    </ul>
+
+    <div class="lang-switch" role="group" aria-label="Selector de idioma">
+      <button type="button" class="lang-btn active" data-lang="es">ES</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-image img-ph" data-name="hero.jpg">
+    <img src="images/hero.jpg" alt="Fachada de un edificio de apartamentos con terrazas al atardecer, Larache Costa Apartamentos" onerror="this.closest('.img-ph').classList.add('img-missing')">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow" data-i18n="hero.eyebrow">Apartamentos frente a la costa</p>
+    <h1 data-i18n="hero.title">Larache Costa Apartamentos</h1>
+    <p class="hero-subtitle" data-i18n="hero.subtitle">A pocos minutos andando de la playa, con todo lo necesario para sentirte como en casa.</p>
+    <div class="hero-actions">
+      <a href="#reservas" class="btn btn-primary" data-i18n="hero.cta_reserve">Reservar</a>
+      <a href="#apartamentos" class="btn btn-ghost" data-i18n="hero.cta_apartments">Ver apartamentos</a>
+    </div>
+  </div>
+  <a href="#ventajas" class="scroll-hint" aria-hidden="true"></a>
+</section>
+
+<!-- VENTAJAS -->
+<section class="section section-advantages" id="ventajas">
+  <div class="container">
+    <div class="advantages-grid">
+      <div class="advantage-item">
+        <span class="advantage-icon" aria-hidden="true">🏖️</span>
+        <h3 data-i18n="adv.beach.title">Cerca de la playa</h3>
+        <p data-i18n="adv.beach.desc">A pocos minutos andando de la arena.</p>
+      </div>
+      <div class="advantage-item">
+        <span class="advantage-icon" aria-hidden="true">🔑</span>
+        <h3 data-i18n="adv.checkin.title">Entrada autónoma</h3>
+        <p data-i18n="adv.checkin.desc">Acceso con código, sin esperas ni horarios fijos.</p>
+      </div>
+      <div class="advantage-item">
+        <span class="advantage-icon" aria-hidden="true">📶</span>
+        <h3 data-i18n="adv.wifi.title">Wifi de fibra</h3>
+        <p data-i18n="adv.wifi.desc">Conexión rápida y estable en todo el apartamento.</p>
+      </div>
+      <div class="advantage-item">
+        <span class="advantage-icon" aria-hidden="true">🗣️</span>
+        <h3 data-i18n="adv.lang.title">Atención ES / EN</h3>
+        <p data-i18n="adv.lang.desc">Te atendemos en español e inglés durante toda la estancia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APARTAMENTOS -->
+<section class="section section-alt" id="apartamentos">
+  <div class="container">
+    <p class="section-eyebrow" data-i18n="apts.eyebrow">Nuestros alojamientos</p>
+    <h2 class="section-title" data-i18n="apts.title">Apartamentos</h2>
+    <p class="section-lead" data-i18n="apts.lead">Tres apartamentos de muestra, pensados para distintos tipos de estancia.</p>
+
+    <div class="apartments-grid">
+
+      <!-- Estudio Marina -->
+      <article class="apt-card" id="apt-a1" data-apt-id="a1">
+        <div class="apt-gallery">
+          <div class="apt-photo-main img-ph" data-name="a1-1.jpg">
+            <img src="images/a1-1.jpg" alt="Salón soleado del Estudio Marina con sillón amarillo y balcón" class="apt-main-img" loading="lazy" onerror="this.closest('.img-ph').classList.add('img-missing')">
+          </div>
+          <div class="apt-thumbs">
+            <button type="button" class="apt-thumb active img-ph" data-name="a1-1.jpg" data-full="images/a1-1.jpg">
+              <img src="images/a1-1.jpg" alt="Salón soleado del Estudio Marina con sillón amarillo y balcón" loading="lazy" onerror="this.closest('.img-ph').classList.add('img-missing')">
+            </button>
+            <button type="button" class="apt-thumb img-ph" data-name="a1-2.jpg" data-full="images/a1-2.jpg">
+              <img src="images/a1-2.jpg" alt="Cama doble del Estudio Marina" loading="lazy" onerror="this.closest('.img-ph').classList.add('img-missing')">
+            </button>
+            <button type="button" class="apt-thumb img-ph" data-name="a1-3.jpg" data-full="images/a1-3.jpg">
+              <img src="images/a1-3.jpg" alt="Cocina equipada del Estudio Marina" loading="lazy" onerror="this.closest('.img-ph').classList.add('img-missing')">
+            </button>
+          </div>
+        </div>
+        <div class="apt-info">
+          <h3 data-i18n="apt.a1.name">Estudio Marina</h3>
+          <ul class="apt-specs">
+            <li><span aria-hidden="true">👥</span> <span data-i18n="apt.a1.guests">2 personas</span></li>
+            <li><span aria-hidden="true">📐</span> <span data-i18n="apt.a1.size">35 m²</span></li>
+            <li><span aria-hidden="true">🛏️</span> <span data-i18n="apt.a1.beds">1 cama doble</span></li>
+            <li><span aria-hidden="true">🌇</span> <span data-i18n="apt.a1.extra">Balcón</span></li>
+          </ul>
+          <ul class="apt-amenities">
+            <li><span aria-hidden="true">📶</span><span data-i18n="amenity.wifi">Wifi</span></li>
+            <li><span aria-hidden="true">❄️</span><span data-i18n="amenity.ac">Aire acondicionado</span></li>
+            <li><span aria-hidden="true">🍳</span><span data-i18n="amenity.kitchen">Cocina equipada</span></li>
+            <li><span aria-hidden="true">🛁</span><span data-i18n="amenity.towels">Ropa de cama y toallas</span></li>
+          </ul>
+          <div class="apt-price-row">
+            <div class="apt-price">
+              <span class="apt-price-from" data-i18n="apt.price_from">desde</span>
+              <span class="apt-price-value">70&nbsp;€</span>
+              <span class="apt-price-unit" data-i18n="apt.price_night">/ noche</span>
+            </div>
+            <p class="apt-cleaning" data-i18n="apt.a1.cleaning">Limpieza final: 40 €</p>
+          </div>
+          <div class="apt-actions">
+            <button type="button" class="btn btn-ghost-dark btn-availability" data-apt="a1" data-i18n="apt.cta_availability">Ver disponibilidad</button>
+            <button type="button" class="btn btn-primary btn-book-apt" data-apt="a1" data-i18n="apt.cta_book">Reservar este apartamento</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Apartamento Mirador -->
+      <article class="apt-card" id="apt-a2" data-apt-id="a2">
+        <div class="apt-gallery">
+          <div class="apt-photo-main img-ph" data-name="a2-1.jpg">
+            <img src="images/a2-1.jpg" alt="Salón del Apartamento Mirador con televisión y zona de estar" class="apt-main-img" loading="lazy" onerror="this.closest('.img-ph').classList.add('img-missing')">
+          </div>
+          <div class="apt-thumbs">
+            <button type="button" class="apt-thumb active img-ph" data-name="a2-1.jpg" data-full="images/a2-1.jpg">
+              <img src="images/a2-1.jpg" alt="Salón del Apartamento Mirador con televisión y zona de estar" loading="lazy" onerror="this.closest('.img-ph').classList.add('img-missing')">
+            </button>
+            <button type="button" class="apt-thumb img-ph" data-name="a2-2.jpg" data-full="images/a2-2.jpg">
+              <img src="images/a2-2.jpg" alt="Dormitorio del Apartamento Mirador con vistas a la terraza" loading="lazy" onerror="this.closest('.img-ph').classList.add('img-missing')">
+            </button>
+            <button type="button" class="apt-thumb img-ph" data-name="a2-3.jpg" data-full="images/a2-3.jpg">
+              <img src="images/a2-3.jpg" alt="Salón del Apartamento Mirador con vista hacia el pasillo" loading="lazy" onerror="this.closest('.img-ph').classList.add('img-missing')">
+            </button>
+          </div>
+        </div>
+        <div class="apt-info">
+          <h3 data-i18n="apt.a2.name">Apartamento Mirador</h3>
+          <ul class="apt-specs">
+            <li><span aria-hidden="true">👥</span> <span data-i18n="apt.a2.guests">4 personas</span></li>
+            <li><span aria-hidden="true">📐</span> <span data-i18n="apt.a2.size">62 m²</span></li>
+            <li><span aria-hidden="true">🛏️</span> <span data-i18n="apt.a2.beds">2 dormitorios</span></li>
+            <li><span aria-hidden="true">🌅</span> <span data-i18n="apt.a2.extra">Terraza</span></li>
+          </ul>
+          <ul class="apt-amenities">
+            <li><span aria-hidden="true">📶</span><span data-i18n="amenity.wifi">Wifi</span></li>
+            <li><span aria-hidden="true">❄️</span><span data-i18n="amenity.ac">Aire acondicionado</span></li>
+            <li><span aria-hidden="true">🍳</span><span data-i18n="amenity.kitchen">Cocina equipada</span></li>
+            <li><span aria-hidden="true">🧺</span><span data-i18n="amenity.washer">Lavadora</span></li>
+            <li><span aria-hidden="true">🛁</span><span data-i18n="amenity.towels">Ropa de cama y toallas</span></li>
+          </ul>
+          <div class="apt-price-row">
+            <div class="apt-price">
+              <span class="apt-price-from" data-i18n="apt.price_from">desde</span>
+              <span class="apt-price-value">110&nbsp;€</span>
+              <span class="apt-price-unit" data-i18n="apt.price_night">/ noche</span>
+            </div>
+            <p class="apt-cleaning" data-i18n="apt.a2.cleaning">Limpieza final: 50 €</p>
+          </div>
+          <div class="apt-actions">
+            <button type="button" class="btn btn-ghost-dark btn-availability" data-apt="a2" data-i18n="apt.cta_availability">Ver disponibilidad</button>
+            <button type="button" class="btn btn-primary btn-book-apt" data-apt="a2" data-i18n="apt.cta_book">Reservar este apartamento</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ático Poniente -->
+      <article class="apt-card" id="apt-a3" data-apt-id="a3">
+        <div class="apt-gallery">
+          <div class="apt-photo-main img-ph" data-name="a3-1.jpg">
+            <img src="images/a3-1.jpg" alt="Terraza grande del Ático Poniente con mesa, flores y vistas al atardecer" class="apt-main-img" loading="lazy" onerror="this.closest('.img-ph').classList.add('img-missing')">
+          </div>
+          <div class="apt-thumbs">
+            <button type="button" class="apt-thumb active img-ph" data-name="a3-1.jpg" data-full="images/a3-1.jpg">
+              <img src="images/a3-1.jpg" alt="Terraza grande del Ático Poniente con mesa, flores y vistas al atardecer" loading="lazy" onerror="this.closest('.img-ph').classList.add('img-missing')">
+            </button>
+            <button type="button" class="apt-thumb img-ph" data-name="a3-2.jpg" data-full="images/a3-2.jpg">
+              <img src="images/a3-2.jpg" alt="Dormitorio principal del Ático Poniente" loading="lazy" onerror="this.closest('.img-ph').classList.add('img-missing')">
+            </button>
+            <button type="button" class="apt-thumb img-ph" data-name="a3-3.jpg" data-full="images/a3-3.jpg">
+              <img src="images/a3-3.jpg" alt="Salón amplio del Ático Poniente con chimenea y vistas a la ciudad" loading="lazy" onerror="this.closest('.img-ph').classList.add('img-missing')">
+            </button>
+          </div>
+        </div>
+        <div class="apt-info">
+          <h3 data-i18n="apt.a3.name">Ático Poniente</h3>
+          <ul class="apt-specs">
+            <li><span aria-hidden="true">👥</span> <span data-i18n="apt.a3.guests">6 personas</span></li>
+            <li><span aria-hidden="true">📐</span> <span data-i18n="apt.a3.size">95 m²</span></li>
+            <li><span aria-hidden="true">🛏️</span> <span data-i18n="apt.a3.beds">3 dormitorios</span></li>
+            <li><span aria-hidden="true">🌅</span> <span data-i18n="apt.a3.extra">Terraza grande</span></li>
+          </ul>
+          <ul class="apt-amenities">
+            <li><span aria-hidden="true">📶</span><span data-i18n="amenity.wifi">Wifi</span></li>
+            <li><span aria-hidden="true">❄️</span><span data-i18n="amenity.ac">Aire acondicionado</span></li>
+            <li><span aria-hidden="true">🍳</span><span data-i18n="amenity.kitchen">Cocina equipada</span></li>
+            <li><span aria-hidden="true">🧺</span><span data-i18n="amenity.washer">Lavadora</span></li>
+            <li><span aria-hidden="true">🅿️</span><span data-i18n="amenity.parking">Plaza de parking</span></li>
+            <li><span aria-hidden="true">🛁</span><span data-i18n="amenity.towels">Ropa de cama y toallas</span></li>
+          </ul>
+          <div class="apt-price-row">
+            <div class="apt-price">
+              <span class="apt-price-from" data-i18n="apt.price_from">desde</span>
+              <span class="apt-price-value">165&nbsp;€</span>
+              <span class="apt-price-unit" data-i18n="apt.price_night">/ noche</span>
+            </div>
+            <p class="apt-cleaning" data-i18n="apt.a3.cleaning">Limpieza final: 60 €</p>
+          </div>
+          <div class="apt-actions">
+            <button type="button" class="btn btn-ghost-dark btn-availability" data-apt="a3" data-i18n="apt.cta_availability">Ver disponibilidad</button>
+            <button type="button" class="btn btn-primary btn-book-apt" data-apt="a3" data-i18n="apt.cta_book">Reservar este apartamento</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p class="apts-note" data-i18n="apts.note">* Apartamentos, fotos y precios de ejemplo, orientados a mostrar el diseño de la web.</p>
+  </div>
+</section>
+
+<!-- DISPONIBILIDAD -->
+<section class="section" id="disponibilidad">
+  <div class="container">
+    <p class="section-eyebrow" data-i18n="cal.eyebrow">Elige tus fechas</p>
+    <h2 class="section-title" data-i18n="cal.title">Disponibilidad</h2>
+    <p class="section-lead" data-i18n="cal.lead">Selecciona la entrada y la salida en el calendario. Los días ocupados son de ejemplo.</p>
+
+    <div class="menu-tabs calendar-tabs" role="tablist" aria-label="Apartamentos">
+      <button class="menu-tab active" data-cal-target="cal-a1" data-i18n="apt.a1.name">Estudio Marina</button>
+      <button class="menu-tab" data-cal-target="cal-a2" data-i18n="apt.a2.name">Apartamento Mirador</button>
+      <button class="menu-tab" data-cal-target="cal-a3" data-i18n="apt.a3.name">Ático Poniente</button>
+    </div>
+
+    <div class="menu-panel active" id="cal-a1" data-apt-id="a1">
+      <div class="calendar-widget" data-apt-id="a1"></div>
+    </div>
+    <div class="menu-panel" id="cal-a2" data-apt-id="a2">
+      <div class="calendar-widget" data-apt-id="a2"></div>
+    </div>
+    <div class="menu-panel" id="cal-a3" data-apt-id="a3">
+      <div class="calendar-widget" data-apt-id="a3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVAS -->
+<section class="section section-alt" id="reservas">
+  <div class="container">
+    <p class="section-eyebrow" data-i18n="reserve.eyebrow">Reserva en 3 pasos</p>
+    <h2 class="section-title" data-i18n="reserve.title">Reserva tu apartamento</h2>
+    <p class="section-lead" data-i18n="reserve.lead">Esta reserva es una demostración: no se envía ni se cobra nada.</p>
+
+    <div class="reserve-wrap">
+
+      <ol class="booking-progress" id="bookingProgress" aria-label="Progreso de la reserva">
+        <li class="progress-step active" data-step="1">
+          <span class="progress-num">1</span>
+          <span class="progress-label" data-i18n="reserve.step1.label">Alojamiento y fechas</span>
+        </li>
+        <li class="progress-step" data-step="2">
+          <span class="progress-num">2</span>
+          <span class="progress-label" data-i18n="reserve.step2.label">Datos de contacto</span>
+        </li>
+        <li class="progress-step" data-step="3">
+          <span class="progress-num">3</span>
+          <span class="progress-label" data-i18n="reserve.step3.label">Confirmación</span>
+        </li>
+      </ol>
+
+      <form id="reservationForm" class="reserve-form" novalidate>
+
+        <!-- STEP 1 -->
+        <div class="wizard-step active" id="wizardStep1">
+          <div class="form-group">
+            <label for="resApt" data-i18n="reserve.label.apartment">Apartamento</label>
+            <select id="resApt" name="apartment" required>
+              <option value="a1" data-i18n="apt.a1.name">Estudio Marina</option>
+              <option value="a2" data-i18n="apt.a2.name">Apartamento Mirador</option>
+              <option value="a3" data-i18n="apt.a3.name">Ático Poniente</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="resCheckin" data-i18n="reserve.label.checkin">Entrada</label>
+              <input type="date" id="resCheckin" name="checkin" required>
+              <span class="field-error" data-i18n="reserve.error.checkin">Selecciona una fecha de entrada válida.</span>
+            </div>
+            <div class="form-group">
+              <label for="resCheckout" data-i18n="reserve.label.checkout">Salida</label>
+              <input type="date" id="resCheckout" name="checkout" required>
+              <span class="field-error" data-i18n="reserve.error.checkout">Selecciona una fecha de salida válida (mínimo 2 noches, sin días ocupados).</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="resGuests" data-i18n="reserve.label.guests">Número de huéspedes</label>
+            <input type="number" id="resGuests" name="guests" min="1" max="2" value="2" required>
+            <span class="field-error" data-i18n="reserve.error.guests">Indica un número de huéspedes válido para la capacidad del apartamento.</span>
+          </div>
+
+          <div class="price-summary" id="priceSummary">
+            <div class="price-row"><span data-i18n="reserve.price.nights">Noches</span><span id="priceNights">—</span></div>
+            <div class="price-row"><span data-i18n="reserve.price.weekend">Suplemento fin de semana (+15% vie/sáb)</span><span id="priceWeekend">—</span></div>
+            <div class="price-row"><span data-i18n="reserve.price.cleaning">Tarifa de limpieza</span><span id="priceCleaning">—</span></div>
+            <div class="price-row price-total"><span data-i18n="reserve.price.total">Total</span><span id="priceTotal">—</span></div>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-block" id="toStep2" data-i18n="reserve.step1.continue">Continuar</button>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="wizard-step" id="wizardStep2">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="resName" data-i18n="reserve.label.name">Nombre completo</label>
+              <input type="text" id="resName" name="name" required autocomplete="name">
+              <span class="field-error" data-i18n="reserve.error.name">Por favor indica tu nombre.</span>
+            </div>
+            <div class="form-group">
+              <label for="resEmail" data-i18n="reserve.label.email">Correo electrónico</label>
+              <input type="email" id="resEmail" name="email" required autocomplete="email">
+              <span class="field-error" data-i18n="reserve.error.email">Introduce un correo electrónico válido.</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="resPhone" data-i18n="reserve.label.phone">Teléfono</label>
+            <input type="tel" id="resPhone" name="phone" required autocomplete="tel">
+            <span class="field-error" data-i18n="reserve.error.phone">Introduce un teléfono de contacto.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="resNotes" data-i18n="reserve.label.notes">Notas (opcional)</label>
+            <textarea id="resNotes" name="notes" rows="3" data-i18n-placeholder="reserve.notes.placeholder" placeholder="Hora de llegada estimada, peticiones especiales..."></textarea>
+          </div>
+
+          <div class="form-group form-group-checkbox">
+            <label class="checkbox-label">
+              <input type="checkbox" id="resPrivacy" name="privacy" required>
+              <span data-i18n="reserve.label.privacy">He leído y acepto la política de privacidad de muestra.</span>
+            </label>
+            <span class="field-error" data-i18n="reserve.error.privacy">Debes aceptar la política de privacidad para continuar.</span>
+          </div>
+
+          <div class="wizard-actions">
+            <button type="button" class="btn btn-ghost-dark" id="toStep1" data-i18n="reserve.step2.back">Atrás</button>
+            <button type="submit" class="btn btn-primary" data-i18n="reserve.submit">Confirmar reserva</button>
+          </div>
+        </div>
+
+      </form>
+
+      <!-- STEP 3 -->
+      <div class="wizard-step reserve-confirmation" id="wizardStep3" hidden>
+        <div class="confirmation-icon">&#10003;</div>
+        <h3 data-i18n="reserve.confirm.title">Reserva de muestra confirmada</h3>
+        <p class="confirmation-code" id="confirmationCode"></p>
+        <dl class="confirmation-summary" id="confirmationSummary"></dl>
+        <p class="confirmation-demo-note" data-i18n="reserve.confirm.demo_note">Esto es una demostración: no se ha enviado ni cobrado nada.</p>
+        <button type="button" class="btn btn-ghost-dark" id="newReservationBtn" data-i18n="reserve.confirm.new">Hacer otra reserva</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ZONA -->
+<section class="section section-alt" id="zona">
+  <div class="container">
+    <p class="section-eyebrow" data-i18n="area.eyebrow">Alrededores</p>
+    <h2 class="section-title" data-i18n="area.title">La zona</h2>
+    <p class="section-lead" data-i18n="area.lead">Todo lo que necesitas, cerca del apartamento.</p>
+
+    <div class="area-grid">
+      <article class="area-card">
+        <span class="area-icon" aria-hidden="true">🏖️</span>
+        <h3 data-i18n="area.beach.title">Playa</h3>
+        <p data-i18n="area.beach.desc">A pocos minutos andando, con paseo marítimo y chiringuitos de ejemplo.</p>
+      </article>
+      <article class="area-card">
+        <span class="area-icon" aria-hidden="true">🛍️</span>
+        <h3 data-i18n="area.market.title">Mercado</h3>
+        <p data-i18n="area.market.desc">Mercado local con fruta, pescado y productos frescos de la zona.</p>
+      </article>
+      <article class="area-card">
+        <span class="area-icon" aria-hidden="true">🚌</span>
+        <h3 data-i18n="area.transport.title">Transporte</h3>
+        <p data-i18n="area.transport.desc">Parada de autobús y de bicicletas compartidas muy cerca del edificio.</p>
+      </article>
+      <article class="area-card">
+        <span class="area-icon" aria-hidden="true">🍽️</span>
+        <h3 data-i18n="area.food.title">Restaurantes</h3>
+        <p data-i18n="area.food.desc">Varias terrazas y restaurantes de cocina mediterránea a poca distancia.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <p class="section-eyebrow" data-i18n="faq.eyebrow">Dudas frecuentes</p>
+    <h2 class="section-title" data-i18n="faq.title">Preguntas Frecuentes</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span data-i18n="faq.q1">¿A qué hora son la entrada y la salida?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq.a1">La entrada es a partir de las 16:00 y la salida antes de las 11:00, mediante código de acceso autónomo.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span data-i18n="faq.q2">¿Cuál es la política de cancelación?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq.a2">Cancelación gratuita hasta 7 días antes de la entrada. Pasado ese plazo, se aplica una penalización de ejemplo.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span data-i18n="faq.q3">¿Se admiten mascotas?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq.a3">Se admiten mascotas pequeñas previa solicitud, con un suplemento de ejemplo por limpieza adicional.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span data-i18n="faq.q4">¿Hay parking disponible?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq.a4">El Ático Poniente incluye una plaza de parking. Para el resto de apartamentos hay parking público cercano de ejemplo.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span data-i18n="faq.q5">¿Puedo pedir factura?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq.a5">Sí, se puede solicitar factura con los datos fiscales tras la estancia, en un caso real.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span data-i18n="faq.q6">¿Se incluye ropa de cama y toallas?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p data-i18n="faq.a6">Sí, todos los apartamentos incluyen ropa de cama y toallas en la tarifa de limpieza final.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="section section-alt" id="contacto">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-text">
+        <p class="section-eyebrow" data-i18n="contact.eyebrow">Hablemos</p>
+        <h2 class="section-title contact-title" data-i18n="contact.title">Contacto</h2>
+        <p>📍 <span data-i18n="contact.address">Calle de Ejemplo, 10, costa de Valencia (dirección ficticia)</span></p>
+        <p>📞 <span data-i18n="contact.phone">600 000 000 (número de ejemplo)</span></p>
+        <p>✉️ <span data-i18n="contact.email">reservas@larachecosta-ejemplo.com (correo de ejemplo)</span></p>
+        <p>🧾 <span data-i18n="contact.registry">Número de registro turístico: VT-00000-V (ficticio)</span></p>
+      </div>
+      <div class="map-block">
+        <iframe
+          title="Mapa de ubicación de ejemplo de Larache Costa Apartamentos"
+          src="https://www.google.com/maps?q=Valencia,Spain&output=embed"
+          width="100%" height="100%" style="border:0;" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <span class="brand-mark">LC</span>
+      <span class="brand-name">Larache Costa</span>
+      <p data-i18n="footer.tagline">Apartamentos turísticos de muestra, cerca de la playa.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4 data-i18n="footer.links_title">Enlaces</h4>
+      <ul>
+        <li><a href="#apartamentos" data-i18n="nav.apartments">Apartamentos</a></li>
+        <li><a href="#disponibilidad" data-i18n="nav.availability">Disponibilidad</a></li>
+        <li><a href="#faq" data-i18n="nav.faq">Preguntas</a></li>
+        <li><a href="#reservas" data-i18n="nav.reserve">Reservar</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4 data-i18n="footer.contact_title">Contacto</h4>
+      <ul>
+        <li data-i18n="contact.address">Calle de Ejemplo, 10, costa de Valencia (dirección ficticia)</li>
+        <li data-i18n="contact.phone">600 000 000 (número de ejemplo)</li>
+        <li data-i18n="contact.email">reservas@larachecosta-ejemplo.com (correo de ejemplo)</li>
+        <li data-i18n="contact.registry">Número de registro turístico: VT-00000-V (ficticio)</li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4 data-i18n="footer.follow_title">Síguenos</h4>
+      <div class="social-links">
+        <span class="social-link-sample" aria-label="Instagram (enlace de muestra, no funcional)" title="Enlace de muestra, no funcional">Instagram</span>
+        <span class="social-link-sample" aria-label="Facebook (enlace de muestra, no funcional)" title="Enlace de muestra, no funcional">Facebook</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p data-i18n="footer.demo_notice">Este sitio es una demostración de diseño web. Larache Costa es una marca ficticia; ninguna información de contacto, dirección o reserva es real.</p>
+    <p data-i18n="footer.legal_notice">En la web real: aviso legal, política de privacidad y de cookies.</p>
+    <p>&copy; <span id="currentYear"></span> Larache Costa — <span data-i18n="footer.sample">sitio de muestra</span>.</p>
+  </div>
+</footer>
+
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
